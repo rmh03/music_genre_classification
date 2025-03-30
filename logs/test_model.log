@@ -1,0 +1,120 @@
+2025-03-30 16:20:14 - INFO - Loading and preprocessing data for testing...
+2025-03-30 16:20:15 - INFO - 
+=== Testing CNN Model ===
+2025-03-30 16:20:17 - INFO - CNN Accuracy: 0.1000
+2025-03-30 16:20:17 - INFO - Loading and preprocessing data for testing...
+2025-03-30 16:20:20 - INFO - 
+=== Testing LSTM Model ===
+2025-03-30 16:20:22 - INFO - LSTM Accuracy: 0.1000
+2025-03-30 16:20:22 - INFO - Loading and preprocessing data for testing...
+2025-03-30 16:20:25 - INFO - 
+=== Testing KNN ===
+2025-03-30 16:20:25 - INFO - KNN Accuracy: 0.5000
+2025-03-30 16:20:25 - INFO - 
+=== Testing SVM ===
+2025-03-30 16:20:25 - INFO - SVM Accuracy: 0.3000
+2025-03-30 16:20:25 - INFO - 
+=== Testing Logistic Regression ===
+2025-03-30 16:20:25 - INFO - Logistic Regression Accuracy: 0.5000
+2025-03-30 16:20:25 - INFO - 
+=== Testing Decision Tree ===
+2025-03-30 16:20:25 - INFO - Decision Tree Accuracy: 0.3000
+2025-03-30 16:20:25 - INFO - 
+=== Testing Random Forest ===
+2025-03-30 16:20:25 - INFO - Random Forest Accuracy: 0.4000
+2025-03-30 16:37:39 - INFO - Loading and preprocessing data for testing...
+2025-03-30 16:37:46 - INFO - 
+=== Testing CNN Model ===
+2025-03-30 16:37:48 - INFO - CNN Accuracy: 0.2000
+2025-03-30 16:37:48 - INFO - Loading and preprocessing data for testing...
+2025-03-30 16:37:51 - INFO - 
+=== Testing LSTM Model ===
+2025-03-30 16:37:54 - INFO - LSTM Accuracy: 0.0000
+2025-03-30 16:37:54 - INFO - Loading and preprocessing data for testing...
+2025-03-30 16:37:56 - INFO - 
+=== Testing KNN ===
+2025-03-30 16:37:56 - INFO - KNN Accuracy: 0.5000
+2025-03-30 16:37:56 - INFO - 
+=== Testing SVM ===
+2025-03-30 16:37:56 - INFO - SVM Accuracy: 0.3000
+2025-03-30 16:37:56 - INFO - 
+=== Testing Logistic Regression ===
+2025-03-30 16:37:56 - INFO - Logistic Regression Accuracy: 0.5000
+2025-03-30 16:37:56 - INFO - 
+=== Testing Decision Tree ===
+2025-03-30 16:37:56 - INFO - Decision Tree Accuracy: 0.3000
+2025-03-30 16:37:56 - INFO - 
+=== Testing Random Forest ===
+2025-03-30 16:37:56 - INFO - Random Forest Accuracy: 0.4000
+2025-03-30 16:41:28 - INFO - Loading and preprocessing data for testing...
+2025-03-30 16:41:33 - INFO - 
+=== Testing CNN Model ===
+2025-03-30 16:41:35 - INFO - CNN Accuracy: 0.3500
+2025-03-30 16:41:35 - INFO - Loading and preprocessing data for testing...
+2025-03-30 16:41:41 - INFO - 
+=== Testing LSTM Model ===
+2025-03-30 16:41:44 - INFO - LSTM Accuracy: 0.2000
+2025-03-30 16:41:44 - INFO - Loading and preprocessing data for testing...
+2025-03-30 16:41:49 - INFO - 
+=== Testing KNN ===
+2025-03-30 16:41:49 - INFO - KNN Accuracy: 0.7500
+2025-03-30 16:41:49 - INFO - 
+=== Testing SVM ===
+2025-03-30 16:41:49 - INFO - SVM Accuracy: 0.6500
+2025-03-30 16:41:49 - INFO - 
+=== Testing Logistic Regression ===
+2025-03-30 16:41:49 - INFO - Logistic Regression Accuracy: 0.6500
+2025-03-30 16:41:49 - INFO - 
+=== Testing Decision Tree ===
+2025-03-30 16:41:49 - INFO - Decision Tree Accuracy: 0.3500
+2025-03-30 16:41:49 - INFO - 
+=== Testing Random Forest ===
+2025-03-30 16:41:49 - INFO - Random Forest Accuracy: 0.6000
+2025-03-30 16:44:17 - INFO - Loading and preprocessing data for testing...
+2025-03-30 16:44:20 - INFO - 
+=== Testing CNN Model ===
+2025-03-30 16:44:21 - INFO - CNN Accuracy: 0.4000
+2025-03-30 16:44:21 - INFO - Loading and preprocessing data for testing...
+2025-03-30 16:44:24 - INFO - 
+=== Testing LSTM Model ===
+2025-03-30 16:44:27 - INFO - LSTM Accuracy: 0.1500
+2025-03-30 16:44:27 - INFO - Loading and preprocessing data for testing...
+2025-03-30 16:44:30 - INFO - 
+=== Testing KNN ===
+2025-03-30 16:44:30 - INFO - KNN Accuracy: 0.7500
+2025-03-30 16:44:30 - INFO - 
+=== Testing SVM ===
+2025-03-30 16:44:30 - INFO - SVM Accuracy: 0.6500
+2025-03-30 16:44:30 - INFO - 
+=== Testing Logistic Regression ===
+2025-03-30 16:44:30 - INFO - Logistic Regression Accuracy: 0.6500
+2025-03-30 16:44:30 - INFO - 
+=== Testing Decision Tree ===
+2025-03-30 16:44:30 - INFO - Decision Tree Accuracy: 0.3500
+2025-03-30 16:44:30 - INFO - 
+=== Testing Random Forest ===
+2025-03-30 16:44:30 - INFO - Random Forest Accuracy: 0.6000
+2025-03-30 16:48:41 - INFO - Loading and preprocessing data for testing...
+2025-03-30 16:48:44 - INFO - 
+=== Testing CNN Model ===
+2025-03-30 16:48:46 - INFO - CNN Accuracy: 0.5000
+2025-03-30 16:48:46 - INFO - Loading and preprocessing data for testing...
+2025-03-30 16:48:48 - INFO - 
+=== Testing LSTM Model ===
+2025-03-30 16:48:53 - INFO - LSTM Accuracy: 0.2500
+2025-03-30 16:48:53 - INFO - Loading and preprocessing data for testing...
+2025-03-30 16:48:56 - INFO - 
+=== Testing KNN ===
+2025-03-30 16:48:56 - INFO - KNN Accuracy: 0.7500
+2025-03-30 16:48:56 - INFO - 
+=== Testing SVM ===
+2025-03-30 16:48:56 - INFO - SVM Accuracy: 0.6500
+2025-03-30 16:48:56 - INFO - 
+=== Testing Logistic Regression ===
+2025-03-30 16:48:56 - INFO - Logistic Regression Accuracy: 0.6500
+2025-03-30 16:48:56 - INFO - 
+=== Testing Decision Tree ===
+2025-03-30 16:48:56 - INFO - Decision Tree Accuracy: 0.3500
+2025-03-30 16:48:56 - INFO - 
+=== Testing Random Forest ===
+2025-03-30 16:48:56 - INFO - Random Forest Accuracy: 0.6000

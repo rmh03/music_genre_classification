@@ -1,0 +1,120 @@
+2025-03-30 16:18:05 - INFO - Loading and preprocessing data...
+2025-03-30 16:18:59 - INFO - Scaler saved to H:\ML project\Project\models\scaler.pkl
+2025-03-30 16:18:59 - INFO - 
+Training Traditional ML Models...
+2025-03-30 16:18:59 - INFO - 
+=== Training KNN ===
+2025-03-30 16:18:59 - INFO - 
+=== Training SVM ===
+2025-03-30 16:18:59 - INFO - 
+=== Training Logistic Regression ===
+2025-03-30 16:18:59 - INFO - 
+=== Training Decision Tree ===
+2025-03-30 16:18:59 - INFO - 
+=== Training Random Forest ===
+2025-03-30 16:19:00 - INFO - KNN model saved to H:\ML project\Project\models\knn.pkl
+2025-03-30 16:19:00 - INFO - SVM model saved to H:\ML project\Project\models\svm.pkl
+2025-03-30 16:19:00 - INFO - Logistic Regression model saved to H:\ML project\Project\models\logistic_regression.pkl
+2025-03-30 16:19:00 - INFO - Decision Tree model saved to H:\ML project\Project\models\decision_tree.pkl
+2025-03-30 16:19:00 - INFO - Random Forest model saved to H:\ML project\Project\models\random_forest.pkl
+2025-03-30 16:19:00 - INFO - 
+Training Deep Learning Models...
+2025-03-30 16:19:00 - INFO - 
+=== Training CNN ===
+2025-03-30 16:19:04 - INFO - 
+=== Training LSTM ===
+2025-03-30 16:19:10 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-03-30 16:19:10 - INFO - CNN model saved to H:\ML project\Project\models\cnn.h5
+2025-03-30 16:19:10 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-03-30 16:19:10 - INFO - LSTM model saved to H:\ML project\Project\models\lstm.h5
+2025-03-30 16:19:10 - INFO - Processing H:\ML project\Project\data\raw\genres_original\classical\classical.00000.wav...
+2025-03-30 16:23:06 - INFO - Loading and preprocessing data...
+2025-03-30 16:23:57 - INFO - Scaler saved to H:\ML project\Project\models\scaler.pkl
+2025-03-30 16:23:57 - INFO - 
+Training Traditional ML Models...
+2025-03-30 16:23:57 - INFO - 
+=== Training KNN ===
+2025-03-30 16:23:57 - INFO - 
+=== Training SVM ===
+2025-03-30 16:23:57 - INFO - 
+=== Training Logistic Regression ===
+2025-03-30 16:23:57 - INFO - 
+=== Training Decision Tree ===
+2025-03-30 16:23:57 - INFO - 
+=== Training Random Forest ===
+2025-03-30 16:23:57 - INFO - KNN model saved to H:\ML project\Project\models\knn.pkl
+2025-03-30 16:23:57 - INFO - SVM model saved to H:\ML project\Project\models\svm.pkl
+2025-03-30 16:23:57 - INFO - Logistic Regression model saved to H:\ML project\Project\models\logistic_regression.pkl
+2025-03-30 16:23:57 - INFO - Decision Tree model saved to H:\ML project\Project\models\decision_tree.pkl
+2025-03-30 16:23:57 - INFO - Random Forest model saved to H:\ML project\Project\models\random_forest.pkl
+2025-03-30 16:23:57 - INFO - 
+Training Deep Learning Models...
+2025-03-30 16:23:57 - INFO - 
+=== Training CNN ===
+2025-03-30 16:24:01 - INFO - 
+=== Training LSTM ===
+2025-03-30 16:24:07 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-03-30 16:24:07 - INFO - CNN model saved to H:\ML project\Project\models\cnn.h5
+2025-03-30 16:24:07 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-03-30 16:24:07 - INFO - LSTM model saved to H:\ML project\Project\models\lstm.h5
+2025-03-30 16:24:07 - INFO - Processing H:\ML project\Project\data\raw\genres_original\classical\classical.00000.wav...
+2025-03-30 16:29:27 - INFO - Loading and preprocessing data...
+2025-03-30 16:31:06 - INFO - Scaler saved to H:\ML project\Project\models\scaler.pkl
+2025-03-30 16:31:06 - INFO - 
+Training Traditional ML Models...
+2025-03-30 16:31:06 - INFO - 
+=== Training KNN ===
+2025-03-30 16:31:07 - INFO - 
+=== Training SVM ===
+2025-03-30 16:31:07 - INFO - 
+=== Training Logistic Regression ===
+2025-03-30 16:31:07 - INFO - 
+=== Training Decision Tree ===
+2025-03-30 16:31:07 - INFO - 
+=== Training Random Forest ===
+2025-03-30 16:31:08 - INFO - KNN model saved to H:\ML project\Project\models\knn.pkl
+2025-03-30 16:31:08 - INFO - SVM model saved to H:\ML project\Project\models\svm.pkl
+2025-03-30 16:31:08 - INFO - Logistic Regression model saved to H:\ML project\Project\models\logistic_regression.pkl
+2025-03-30 16:31:08 - INFO - Decision Tree model saved to H:\ML project\Project\models\decision_tree.pkl
+2025-03-30 16:31:08 - INFO - Random Forest model saved to H:\ML project\Project\models\random_forest.pkl
+2025-03-30 16:31:08 - INFO - 
+Training Deep Learning Models...
+2025-03-30 16:31:10 - INFO - 
+=== Training CNN ===
+2025-03-30 16:31:17 - INFO - 
+=== Training LSTM ===
+2025-03-30 16:31:30 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-03-30 16:31:30 - INFO - CNN model saved to H:\ML project\Project\models\cnn.h5
+2025-03-30 16:31:30 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-03-30 16:31:30 - INFO - LSTM model saved to H:\ML project\Project\models\lstm.h5
+2025-03-30 16:31:30 - INFO - Processing H:\ML project\Project\data\raw\genres_original\classical\classical.00000.wav...
+2025-03-30 16:47:24 - INFO - Loading and preprocessing data...
+2025-03-30 16:48:04 - INFO - Scaler saved to H:\ML project\Project\models\scaler.pkl
+2025-03-30 16:48:04 - INFO - 
+Training Traditional ML Models...
+2025-03-30 16:48:04 - INFO - 
+=== Training KNN ===
+2025-03-30 16:48:04 - INFO - 
+=== Training SVM ===
+2025-03-30 16:48:04 - INFO - 
+=== Training Logistic Regression ===
+2025-03-30 16:48:04 - INFO - 
+=== Training Decision Tree ===
+2025-03-30 16:48:04 - INFO - 
+=== Training Random Forest ===
+2025-03-30 16:48:04 - INFO - KNN model saved to H:\ML project\Project\models\knn.pkl
+2025-03-30 16:48:04 - INFO - SVM model saved to H:\ML project\Project\models\svm.pkl
+2025-03-30 16:48:04 - INFO - Logistic Regression model saved to H:\ML project\Project\models\logistic_regression.pkl
+2025-03-30 16:48:04 - INFO - Decision Tree model saved to H:\ML project\Project\models\decision_tree.pkl
+2025-03-30 16:48:04 - INFO - Random Forest model saved to H:\ML project\Project\models\random_forest.pkl
+2025-03-30 16:48:04 - INFO - 
+Training Deep Learning Models...
+2025-03-30 16:48:04 - INFO - 
+=== Training CNN ===
+2025-03-30 16:48:08 - INFO - 
+=== Training LSTM ===
+2025-03-30 16:48:15 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-03-30 16:48:15 - INFO - CNN model saved to H:\ML project\Project\models\cnn.h5
+2025-03-30 16:48:15 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-03-30 16:48:15 - INFO - LSTM model saved to H:\ML project\Project\models\lstm.h5
+2025-03-30 16:48:15 - INFO - Processing H:\ML project\Project\data\raw\genres_original\classical\classical.00000.wav...
