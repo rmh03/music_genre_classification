@@ -50,9 +50,7 @@ models/
     scaler.pkl
     svm_tuned.pkl
 notebooks/
-    eda.ipynb
     MLproj (6).ipynb
-    training.ipynb
 src/
     data_processing/
         (Scripts for feature extraction, data augmentation, and preprocessing)

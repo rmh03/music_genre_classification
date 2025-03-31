@@ -676,3 +676,31 @@ Training Deep Learning Models with Hyperparameter Tuning...
 2025-03-31 22:04:14 - INFO - Training CNN with {'filters': 128, 'kernel_size': 3, 'dropout_rate': 0.4, 'dense_units': 256}
 2025-03-31 22:04:44 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
 2025-03-31 22:04:44 - INFO - CNN model saved to H:\ML project\Project\models\cnn.h5
+2025-03-31 22:34:39 - INFO - Loading features from augmented_features.csv...
+2025-03-31 22:34:39 - INFO - Non-numeric columns found: ['augmentation']. Dropping them.
+2025-03-31 22:34:39 - INFO - Scaler saved to H:\ML project\Project\models\scaler.pkl
+2025-03-31 22:34:39 - INFO - 
+Training Traditional ML Models with Hyperparameter Tuning...
+2025-03-31 22:34:39 - INFO - 
+=== Training KNN with Hyperparameter Tuning ===
+2025-03-31 22:34:45 - INFO - Best Parameters for KNN: {'metric': 'manhattan', 'n_neighbors': 3, 'weights': 'distance'}
+2025-03-31 22:34:45 - INFO - 
+=== Training SVM with Hyperparameter Tuning ===
+2025-03-31 22:35:20 - INFO - Best Parameters for SVM: {'C': 10, 'gamma': 'scale', 'kernel': 'rbf'}
+2025-03-31 22:35:20 - INFO - 
+=== Training Random Forest with Hyperparameter Tuning ===
+2025-03-31 22:36:33 - INFO - Best Parameters for Random Forest: {'criterion': 'gini', 'max_depth': 20, 'min_samples_split': 2, 'n_estimators': 200}
+2025-03-31 22:36:33 - INFO - KNN model saved to H:\ML project\Project\models\knn_tuned.pkl
+2025-03-31 22:36:33 - INFO - SVM model saved to H:\ML project\Project\models\svm_tuned.pkl
+2025-03-31 22:36:33 - INFO - Random Forest model saved to H:\ML project\Project\models\random_forest_tuned.pkl
+2025-03-31 22:36:33 - INFO - 
+Training Deep Learning Models with Hyperparameter Tuning...
+2025-03-31 22:36:33 - INFO - 
+=== Tuning CNN ===
+2025-03-31 22:36:33 - INFO - Training CNN with {'filters': 64, 'kernel_size': 5, 'dropout_rate': 0.3, 'dense_units': 256}
+2025-03-31 22:36:56 - INFO - Training CNN with {'filters': 64, 'kernel_size': 5, 'dropout_rate': 0.4, 'dense_units': 256}
+2025-03-31 22:37:16 - INFO - Training CNN with {'filters': 64, 'kernel_size': 5, 'dropout_rate': 0.3, 'dense_units': 128}
+2025-03-31 22:37:35 - INFO - Training CNN with {'filters': 128, 'kernel_size': 5, 'dropout_rate': 0.4, 'dense_units': 256}
+2025-03-31 22:38:03 - INFO - Training CNN with {'filters': 64, 'kernel_size': 3, 'dropout_rate': 0.3, 'dense_units': 256}
+2025-03-31 22:38:20 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-03-31 22:38:20 - INFO - CNN model saved to H:\ML project\Project\models\cnn.h5
