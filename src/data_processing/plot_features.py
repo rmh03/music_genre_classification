@@ -1,94 +1,82 @@
 import os
-import librosa
-import librosa.display
+import pandas as pd
 import matplotlib.pyplot as plt
 from src.utils.config import Config
 
-def extract_and_plot_features(audio_path, genre):
+def plot_features_for_genre(df, genre, output_dir):
     """
-    Extract audio features and save visualizations to genre-specific folders in the figures directory.
+    Plot all features for a single audio file of a specific genre.
 
     Parameters:
-        audio_path (str): Path to the audio file.
-        genre (str): Genre of the audio file.
+        df (DataFrame): DataFrame containing the features.
+        genre (str): The genre to plot features for.
+        output_dir (str): Directory to save the plots.
     """
-    try:
-        # Initialize Config to get the figures directory
-        config = Config()
-        output_dir = os.path.join(config.figures_dir, genre)  # Create a subdirectory for the genre
-        os.makedirs(output_dir, exist_ok=True)  # Ensure the directory exists
+    # Filter the DataFrame for the selected genre
+    genre_df = df[df['label'] == genre]
 
-        # Load audio file
-        audio, sr = librosa.load(audio_path, sr=None)
+    # Select the first audio file for the genre
+    if genre_df.empty:
+        print(f"No data found for genre: {genre}")
+        return
+    audio_data = genre_df.iloc[0]
 
-        # Plot Chroma STFT
-        chroma_stft = librosa.feature.chroma_stft(y=audio, sr=sr)
-        plt.figure(figsize=(10, 4))
-        librosa.display.specshow(chroma_stft, x_axis='time', y_axis='chroma', cmap='coolwarm', sr=sr)
-        plt.colorbar()
-        plt.title(f'Chroma STFT - {genre}')
-        plt.savefig(os.path.join(output_dir, f'chroma_stft_{genre}.png'))
-        plt.close()
+    # Create output directory for the genre
+    genre_output_dir = os.path.join(output_dir, genre)
+    os.makedirs(genre_output_dir, exist_ok=True)
 
-        # Plot RMS Energy
-        rms = librosa.feature.rms(y=audio)
-        plt.figure(figsize=(10, 4))
-        plt.semilogy(rms.T, label='RMS Energy', color='b')
-        plt.xlabel('Frames')
-        plt.ylabel('RMS Energy')
-        plt.title(f'RMS Energy - {genre}')
-        plt.savefig(os.path.join(output_dir, f'rms_energy_{genre}.png'))
-        plt.close()
+    # Plot all features
+    features_to_plot = [
+        'chroma_stft_mean', 'chroma_stft_var', 'rms_mean', 'rms_var',
+        'spectral_centroid_mean', 'spectral_centroid_var', 'spectral_bandwidth_mean', 'spectral_bandwidth_var',
+        'rolloff_mean', 'rolloff_var', 'zero_crossing_rate_mean', 'zero_crossing_rate_var', 'tempo'
+    ]
+    mfcc_features = [f'mfcc{i}_mean' for i in range(1, 21)] + [f'mfcc{i}_var' for i in range(1, 21)]
 
-        # Plot Spectral Centroid
-        spectral_centroid = librosa.feature.spectral_centroid(y=audio, sr=sr)
-        plt.figure(figsize=(10, 4))
-        plt.semilogy(spectral_centroid.T, label='Spectral Centroid', color='g')
-        plt.xlabel('Frames')
-        plt.ylabel('Hz')
-        plt.title(f'Spectral Centroid - {genre}')
-        plt.savefig(os.path.join(output_dir, f'spectral_centroid_{genre}.png'))
-        plt.close()
+    # Plot spectral features
+    plt.figure(figsize=(10, 6))
+    for feature in features_to_plot:
+        plt.bar(feature, audio_data[feature])
+    plt.title(f"Spectral Features - {genre}")
+    plt.xticks(rotation=45, ha='right')
+    plt.tight_layout()
+    plt.savefig(os.path.join(genre_output_dir, f"{genre}_spectral_features.png"))
+    plt.close()
 
-        # Plot MFCCs
-        mfccs = librosa.feature.mfcc(y=audio, sr=sr, n_mfcc=13)
-        plt.figure(figsize=(10, 4))
-        librosa.display.specshow(mfccs, x_axis='time', sr=sr)
-        plt.colorbar()
-        plt.title(f'MFCCs - {genre}')
-        plt.savefig(os.path.join(output_dir, f'mfccs_{genre}.png'))
-        plt.close()
+    # Plot MFCC features
+    plt.figure(figsize=(12, 6))
+    mfcc_means = [audio_data[f'mfcc{i}_mean'] for i in range(1, 21)]
+    mfcc_vars = [audio_data[f'mfcc{i}_var'] for i in range(1, 21)]
+    plt.bar(range(1, 21), mfcc_means, label='MFCC Means', alpha=0.7)
+    plt.bar(range(1, 21), mfcc_vars, label='MFCC Variances', alpha=0.7)
+    plt.title(f"MFCC Features - {genre}")
+    plt.xlabel("MFCC Index")
+    plt.ylabel("Value")
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(os.path.join(genre_output_dir, f"{genre}_mfcc_features.png"))
+    plt.close()
 
-        print(f"Plots saved for genre: {genre}")
-
-    except Exception as e:
-        print(f"Error processing {audio_path}: {e}")
+    print(f"Plots saved for genre: {genre}")
 
 def main():
     """
-    Main function to process example audio files for each genre.
+    Main function to plot features for one audio file per genre.
     """
-    # Define the directory containing raw audio files
-    input_dir = "h:/ML project/Project/data/raw/genres_original"
+    # Initialize Config and paths
+    config = Config()
+    input_csv = os.path.join(config.data_dir, "augmented", "augmented_features.csv")
+    output_dir = os.path.join(config.docs_dir, "figures")
 
-    # Example audio files for each genre
-    example_files = {
-        "blues": "blues.00000.wav",
-        "classical": "classical.00000.wav",
-        "country": "country.00000.wav",
-        "disco": "disco.00000.wav",
-        "hiphop": "hiphop.00000.wav",
-        "jazz": "jazz.00000.wav",
-        "metal": "metal.00000.wav",
-        "pop": "pop.00000.wav",
-        "reggae": "reggae.00000.wav",
-        "rock": "rock.00000.wav"
-    }
+    # Load the augmented features CSV
+    df = pd.read_csv(input_csv)
 
-    # Process each genre
-    for genre, filename in example_files.items():
-        audio_path = os.path.join(input_dir, genre, filename)
-        extract_and_plot_features(audio_path, genre)
+    # Get the list of unique genres
+    genres = df['label'].unique()
+
+    # Plot features for one audio file per genre
+    for genre in genres:
+        plot_features_for_genre(df, genre, output_dir)
 
 if __name__ == "__main__":
     main()
