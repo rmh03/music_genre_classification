@@ -7,10 +7,10 @@ class Config:
 
         # Data directories
         self.data_dir = os.path.join(self.base_dir, "data")
-        self.processed_data_dir = os.path.join(self.data_dir, "processed")
+        self.processed_data_dir = os.path.join(self.data_dir, "augmented")
 
         # CSV files
-        self.audio_features_csv = os.path.join(self.processed_data_dir, "audio_features.csv")
+        self.audio_features_csv = os.path.join(self.processed_data_dir, "augmented_features.csv")
 
         # Model directory
         self.models_dir = os.path.join(self.base_dir, "models")

@@ -1,22 +1,20 @@
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
-from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Dropout, Conv1D, MaxPooling1D, Flatten, LSTM, BatchNormalization, Input
+from tensorflow.keras.layers import Dense, Dropout, Conv1D, MaxPooling1D, Flatten, BatchNormalization, Input
 import joblib
 
 # KNN Model
 def create_knn_model(n_neighbors=5, metric='minkowski', weights='uniform'):
     return KNeighborsClassifier(n_neighbors=n_neighbors, metric=metric, weights=weights)
 
-# SVM Model
-def create_svm_model(kernel='rbf', C=1.0, gamma='scale'):
-    return SVC(kernel=kernel, C=C, gamma=gamma)
 
-# Logistic Regression Model
-def create_logreg_model(max_iter=1000, C=1.0, solver='lbfgs'):
-    return LogisticRegression(max_iter=max_iter, C=C, solver=solver)
+def create_svm_model(kernel='rbf', C=1.0, gamma='scale', probability=True):
+    """
+    Create an SVM model with the specified parameters.
+    """
+    return SVC(kernel=kernel, C=C, gamma=gamma, probability=probability)
 
 # Random Forest Classifier
 def create_random_forest_model(n_estimators=100, max_depth=None, random_state=42):
@@ -37,24 +35,6 @@ def create_cnn_model(input_shape, num_classes):
         Flatten(),
         Dense(256, activation='relu'),
         Dropout(0.4),
-        Dense(num_classes, activation='softmax')
-    ])
-    model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
-    return model
-
-# LSTM Model
-def create_lstm_model(input_shape, num_classes):
-    """
-    Create a Long Short-Term Memory (LSTM) model.
-    """
-    model = Sequential([
-        Input(shape=input_shape),
-        LSTM(128, return_sequences=True),
-        Dropout(0.3),
-        LSTM(64),
-        Dropout(0.3),
-        Dense(128, activation='relu'),
-        Dropout(0.3),
         Dense(num_classes, activation='softmax')
     ])
     model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])

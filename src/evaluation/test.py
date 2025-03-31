@@ -26,8 +26,18 @@ def test_models():
     df = pd.read_csv(features_csv_path)
 
     # Separate features and labels
-    X = df.drop(columns=["filename", "label"])
+    X = df.drop(columns=["filename", "label"])  # Drop filename and label columns
     y = df["label"]
+
+    # Handle non-numeric columns in X
+    non_numeric_columns = X.select_dtypes(include=["object"]).columns
+    if not non_numeric_columns.empty:
+        logger.log(f"Non-numeric columns found: {list(non_numeric_columns)}. Dropping them.")
+        X = X.drop(columns=non_numeric_columns)  # Drop all non-numeric columns
+
+    # Verify that all remaining columns are numeric
+    if not X.select_dtypes(include=["number"]).shape[1] == X.shape[1]:
+        raise ValueError("Feature matrix X still contains non-numeric data after preprocessing.")
 
     # Encode labels
     y_encoded = pd.factorize(y)[0]
@@ -35,7 +45,7 @@ def test_models():
     # Load scaler
     scaler_path = config.models_dir + "/scaler.pkl"
     scaler = joblib.load(scaler_path)
-    X = scaler.transform(X)
+    X = scaler.transform(X)  # Scale the features
 
     # Apply feature selection
     selector_path = config.models_dir + "/feature_selector.pkl"
@@ -49,7 +59,6 @@ def test_models():
     sklearn_model_paths = {
         "KNN": config.models_dir + "/knn_tuned.pkl",
         "SVM": config.models_dir + "/svm_tuned.pkl",
-        "Logistic Regression": config.models_dir + "/logistic_regression_tuned.pkl",
         "Random Forest": config.models_dir + "/random_forest_tuned.pkl"
     }
     for name, path in sklearn_model_paths.items():
@@ -60,8 +69,7 @@ def test_models():
     # Test deep learning models
     logger.log("\nTesting Deep Learning Models...")
     dl_model_paths = {
-        "CNN": config.models_dir + "/cnn.h5",
-        "LSTM": config.models_dir + "/lstm.h5"
+        "CNN": config.models_dir + "/cnn.h5"
     }
     for name, path in dl_model_paths.items():
         model = load_model(path)
