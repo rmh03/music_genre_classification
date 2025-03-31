@@ -1,7 +1,13 @@
-from src.evaluation.metrics import evaluate_sklearn_model, evaluate_dl_model
+import sys
+import os
+
+# Add the project root directory to sys.path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
+
 from src.utils.config import Config
 from src.utils.logger import Logger
-from sklearn.externals import joblib
+from src.evaluation.metrics import evaluate_sklearn_model, evaluate_dl_model
+import joblib  # Corrected import
 from tensorflow.keras.models import load_model
 import pandas as pd
 import numpy as np
@@ -30,6 +36,13 @@ def test_models():
     scaler_path = config.models_dir + "/scaler.pkl"
     scaler = joblib.load(scaler_path)
     X = scaler.transform(X)
+
+    # Apply feature selection
+    selector_path = config.models_dir + "/feature_selector.pkl"
+    if os.path.exists(selector_path):
+        selector = joblib.load(selector_path)
+        X = selector.transform(X)
+        logger.log("Feature selection applied to test dataset.")
 
     # Test traditional ML models
     logger.log("\nTesting Traditional ML Models...")

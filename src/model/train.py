@@ -5,14 +5,12 @@ from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.tree import DecisionTreeClassifier
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, Conv1D, MaxPooling1D, Flatten, LSTM, Input
 from tensorflow.keras.optimizers import Adam
 from src.model.models import (
     create_knn_model, create_svm_model, create_logreg_model,
-    create_decision_tree_model, create_random_forest_model,
-    create_cnn_model, create_lstm_model
+    create_random_forest_model, create_cnn_model, create_lstm_model
 )
 from src.utils.logger import Logger
 import tensorflow as tf
@@ -46,7 +44,6 @@ def train_sklearn_models(X_train, y_train):
         'KNN': create_knn_model(),
         'SVM': create_svm_model(),
         'Logistic Regression': create_logreg_model(),
-        'Decision Tree': create_decision_tree_model(),
         'Random Forest': create_random_forest_model()
     }
     

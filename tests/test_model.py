@@ -58,17 +58,14 @@ class TestModelInference(unittest.TestCase):
             "KNN": create_knn_model(),
             "SVM": create_svm_model(),
             "Logistic Regression": create_logreg_model(),
-            "Decision Tree": create_decision_tree_model(),
             "Random Forest": create_random_forest_model()
         }
 
         for name, model in models.items():
             with self.subTest(model=name):
-                self.logger.log(f"\n=== Testing {name} ===")
                 model.fit(self.X_train, self.y_train)
                 y_pred = model.predict(self.X_test)
-                accuracy = np.mean(y_pred == self.y_test)
-                self.logger.log(f"{name} Accuracy: {accuracy:.4f}")
+                accuracy = accuracy_score(self.y_test, y_pred)
                 self.assertGreater(accuracy, 0.3, f"{name} accuracy should be greater than 0.3.")
 
     def test_cnn_model(self):

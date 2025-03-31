@@ -3,6 +3,8 @@ from src.utils.config import Config
 from src.utils.logger import Logger
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.feature_selection import SelectFromModel
 import pandas as pd
 import joblib
 import os
@@ -36,6 +38,18 @@ def main():
     scaler_path = os.path.join(config.models_dir, "scaler.pkl")
     joblib.dump(scaler, scaler_path)
     logger.log(f"Scaler saved to {scaler_path}")
+
+    # Apply feature selection
+    logger.log("Selecting important features...")
+    selector = SelectFromModel(RandomForestClassifier(n_estimators=100, random_state=42))
+    selector.fit(X_train, y_train)
+    X_train = selector.transform(X_train)
+    X_test = selector.transform(X_test)
+
+    # Save the feature selector for future use
+    selector_path = os.path.join(config.models_dir, "feature_selector.pkl")
+    joblib.dump(selector, selector_path)
+    logger.log(f"Feature selector saved to {selector_path}")
 
     # Train traditional ML models with hyperparameter tuning
     logger.log("\nTraining Traditional ML Models with Hyperparameter Tuning...")
