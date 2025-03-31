@@ -29,18 +29,24 @@ data/
         audio_features.csv
     raw/
         features_3_sec.csv
-        ...
+        features_30_sec.csv
+        genres_original/
+        images_original/
 docs/
     report.md
     figures/
-        (Contains plots of extracted features for each genre)
+        blues/
+        classical/
+        country/
+        ...
     test_results/
-        (Contains confusion matrix plots and evaluation results)
+        knn_confusion_matrix.png
+        svm_confusion_matrix.png
+        random_forest_confusion_matrix.png
+        cnn_confusion_matrix.png
 logs/
-    test_model.log
     test_results.log
     training.log
-    voting_classifier_results.log
 models/
     checkpoint.pth
     cnn.h5
@@ -57,7 +63,7 @@ src/
     evaluation/
         (Scripts for evaluating models and saving results)
     model/
-        (Scripts for model creation, training, and saving)
+        (Scripts forreation, training, and saving)
     utils/
         (Utility scripts such as configuration and logging)
 
@@ -96,7 +102,7 @@ src/
 3. **Extract Features**:
    - Extract features from the audio files:
      ```sh
-     python -m src.data_processing.plot_features
+     python -m src.data_processing.extract_features
      ```
 
 4. **Train Models**:
