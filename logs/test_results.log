@@ -662,3 +662,102 @@ Testing Deep Learning Models...
  [  0   0   1   0   1   1   0 587   6   4]
  [  6   1   0   0   3   0   0   0 587   3]
  [  0   1   8   7   4   0  11   2   4 563]]
+2025-03-31 21:59:09 - INFO - Loading features from audio_features.csv...
+2025-03-31 22:04:59 - INFO - Loading features from audio_features.csv...
+2025-03-31 22:06:11 - INFO - Loading features from audio_features.csv...
+2025-03-31 22:06:11 - INFO - Dropping extra column: harmony_mean
+2025-03-31 22:06:11 - INFO - Dropping extra column: harmony_var
+2025-03-31 22:06:11 - INFO - Dropping extra column: length
+2025-03-31 22:06:11 - INFO - Dropping extra column: perceptr_mean
+2025-03-31 22:06:11 - INFO - Dropping extra column: perceptr_var
+2025-03-31 22:06:11 - INFO - 
+Testing Traditional ML Models...
+2025-03-31 22:06:11 - INFO - Loading KNN model from H:\ML project\Project\models\knn_tuned.pkl...
+2025-03-31 22:06:12 - INFO - 
+=== KNN Evaluation ===
+Accuracy: 0.9920
+Precision: 0.9921
+Recall: 0.9920
+F1 Score: 0.9920
+
+2025-03-31 22:06:12 - INFO - Loading SVM model from H:\ML project\Project\models\svm_tuned.pkl...
+2025-03-31 22:06:13 - INFO - 
+=== SVM Evaluation ===
+Accuracy: 0.9960
+Precision: 0.9961
+Recall: 0.9960
+F1 Score: 0.9960
+
+2025-03-31 22:06:13 - INFO - Loading Random Forest model from H:\ML project\Project\models\random_forest_tuned.pkl...
+2025-03-31 22:06:13 - INFO - 
+=== Random Forest Evaluation ===
+Accuracy: 0.9910
+Precision: 0.9911
+Recall: 0.9910
+F1 Score: 0.9910
+
+2025-03-31 22:07:15 - INFO - Loading features from audio_features.csv...
+2025-03-31 22:07:15 - INFO - 
+Testing Traditional ML Models...
+2025-03-31 22:07:15 - INFO - Loading KNN model from H:\ML project\Project\models\knn_tuned.pkl...
+2025-03-31 22:07:15 - INFO - 
+=== KNN Evaluation ===
+Accuracy: 0.9920
+Precision: 0.9921
+Recall: 0.9920
+F1 Score: 0.9920
+
+2025-03-31 22:07:15 - INFO - Loading SVM model from H:\ML project\Project\models\svm_tuned.pkl...
+2025-03-31 22:07:16 - INFO - 
+=== SVM Evaluation ===
+Accuracy: 0.9960
+Precision: 0.9961
+Recall: 0.9960
+F1 Score: 0.9960
+
+2025-03-31 22:07:16 - INFO - Loading Random Forest model from H:\ML project\Project\models\random_forest_tuned.pkl...
+2025-03-31 22:07:16 - INFO - 
+=== Random Forest Evaluation ===
+Accuracy: 0.9910
+Precision: 0.9911
+Recall: 0.9910
+F1 Score: 0.9910
+
+2025-03-31 22:09:54 - INFO - Loading features from audio_features.csv...
+2025-03-31 22:09:54 - INFO - 
+Testing Traditional ML Models...
+2025-03-31 22:09:54 - INFO - Loading KNN model from H:\ML project\Project\models\knn_tuned.pkl...
+2025-03-31 22:09:55 - INFO - 
+=== KNN Evaluation ===
+Accuracy: 0.9920
+Precision: 0.9921
+Recall: 0.9920
+F1 Score: 0.9920
+
+2025-03-31 22:09:55 - INFO - Loading SVM model from H:\ML project\Project\models\svm_tuned.pkl...
+2025-03-31 22:09:55 - INFO - 
+=== SVM Evaluation ===
+Accuracy: 0.9960
+Precision: 0.9961
+Recall: 0.9960
+F1 Score: 0.9960
+
+2025-03-31 22:09:55 - INFO - Loading Random Forest model from H:\ML project\Project\models\random_forest_tuned.pkl...
+2025-03-31 22:09:56 - INFO - 
+=== Random Forest Evaluation ===
+Accuracy: 0.9910
+Precision: 0.9911
+Recall: 0.9910
+F1 Score: 0.9910
+
+2025-03-31 22:09:56 - INFO - 
+Testing Deep Learning Models...
+2025-03-31 22:09:56 - INFO - Loading CNN model from H:\ML project\Project\models\cnn.h5...
+2025-03-31 22:09:56 - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-03-31 22:09:56 - INFO - 
+=== CNN Evaluation ===
+Accuracy: 0.9940
+Precision: 0.9941
+Recall: 0.9940
+F1 Score: 0.9940
+

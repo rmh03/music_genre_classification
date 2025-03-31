@@ -1,0 +1,24 @@
+
+=== KNN Evaluation ===
+Accuracy: 0.9920
+Precision: 0.9921
+Recall: 0.9920
+F1 Score: 0.9920
+
+=== SVM Evaluation ===
+Accuracy: 0.9960
+Precision: 0.9961
+Recall: 0.9960
+F1 Score: 0.9960
+
+=== Random Forest Evaluation ===
+Accuracy: 0.9910
+Precision: 0.9911
+Recall: 0.9910
+F1 Score: 0.9910
+
+=== CNN Evaluation ===
+Accuracy: 0.9940
+Precision: 0.9941
+Recall: 0.9940
+F1 Score: 0.9940
