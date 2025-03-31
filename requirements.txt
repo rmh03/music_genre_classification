@@ -1,20 +1,20 @@
 # Core Libraries
-numpy==1.23.5
-pandas==1.5.3
-scikit-learn==1.2.2
-matplotlib==3.7.1
-seaborn==0.12.2
+numpy==1.25.0
+pandas==2.1.0
+scikit-learn==1.3.0
+matplotlib==3.8.0
+seaborn==0.13.0
 
 # Deep Learning Libraries
-tensorflow==2.11.0
-keras==2.11.0
+tensorflow==2.13.0
+keras==2.13.0
 
 # Audio Processing Libraries
-librosa==0.10.0
-audioread==3.0.0
+librosa==0.11.0
+audioread==3.0.1
 
 # Logging and Progress Tracking
-tqdm==4.64.1
+tqdm==4.68.0
 
 # Miscellaneous
-joblib==1.2.0
+joblib==1.3.0
