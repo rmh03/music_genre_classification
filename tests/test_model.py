@@ -1,16 +1,21 @@
 import unittest
 import warnings
+import os
+import pandas as pd
 from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import StandardScaler
 from src.model.models import (
     create_knn_model, create_svm_model, create_logreg_model,
     create_decision_tree_model, create_random_forest_model,
     create_cnn_model, create_lstm_model
 )
-from src.data_processing.load_data import load_audio_files, encode_labels
+from src.data_processing.load_data import encode_labels
 from src.utils.config import Config
 from src.utils.logger import Logger
 import numpy as np
+import joblib
 
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
@@ -19,18 +24,33 @@ class TestModelInference(unittest.TestCase):
         """Set up data and models for testing."""
         self.logger = Logger(log_file="test_model.log")
         self.config = Config()
-        self.dataset_path = self.config.audio_dir
 
-        # Load and preprocess data
-        self.logger.log("Loading and preprocessing data for testing...")
-        X, y = load_audio_files(self.dataset_path, max_files_per_genre=10, augment=False)
-        y_encoded, self.label_encoder = encode_labels(y)
+        # Load features from audio_features.csv
+        self.logger.log("Loading features from audio_features.csv...")
+        features_csv_path = self.config.audio_features_csv
+        df = pd.read_csv(features_csv_path)
+
+        # Separate features and labels
+        X = df.drop(columns=["filename", "label"])
+        y = df["label"]
+
+        # Encode labels
+        y_encoded = pd.factorize(y)[0]
+
+        # Split data into training and testing sets
         X_train, X_test, y_train, y_test = train_test_split(X, y_encoded, test_size=0.2, random_state=42)
+
+        # Scale the features
         scaler = StandardScaler()
         self.X_train = scaler.fit_transform(X_train)
         self.X_test = scaler.transform(X_test)
         self.y_train = y_train
         self.y_test = y_test
+
+        # Save the scaler for future use
+        scaler_path = self.config.models_dir + "/scaler.pkl"
+        joblib.dump(scaler, scaler_path)
+        self.logger.log(f"Scaler saved to {scaler_path}")
 
     def test_sklearn_models(self):
         """Test inference for traditional ML models."""
@@ -54,7 +74,7 @@ class TestModelInference(unittest.TestCase):
     def test_cnn_model(self):
         """Test inference for CNN model."""
         self.logger.log("\n=== Testing CNN Model ===")
-        cnn_model = create_cnn_model(input_shape=(self.X_train.shape[1], 1), num_classes=len(self.label_encoder.classes_))
+        cnn_model = create_cnn_model(input_shape=(self.X_train.shape[1], 1), num_classes=len(np.unique(self.y_train)))
         cnn_model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
         # Reshape data for CNN
@@ -69,7 +89,7 @@ class TestModelInference(unittest.TestCase):
     def test_lstm_model(self):
         """Test inference for LSTM model."""
         self.logger.log("\n=== Testing LSTM Model ===")
-        lstm_model = create_lstm_model(input_shape=(self.X_train.shape[1], 1), num_classes=len(self.label_encoder.classes_))
+        lstm_model = create_lstm_model(input_shape=(self.X_train.shape[1], 1), num_classes=len(np.unique(self.y_train)))
         lstm_model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
         # Reshape data for LSTM
@@ -123,6 +143,43 @@ class TestModelCreation(unittest.TestCase):
         model = create_lstm_model(input_shape, num_classes)
         self.assertIsNotNone(model, "LSTM model should not be None.")
         self.assertEqual(model.input_shape[1:], input_shape, "LSTM input shape mismatch.")
+
+class TestModelTraining(unittest.TestCase):
+    def setUp(self):
+        """Set up configuration and paths."""
+        self.config = Config()
+        self.audio_features_csv = self.config.audio_features_csv
+
+    def test_train_test_split(self):
+        """Test if the dataset can be split into training and testing sets."""
+        df = pd.read_csv(self.audio_features_csv)
+        X = df.drop(columns=["filename", "label"])
+        y = df["label"]
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+        self.assertGreater(len(X_train), 0, "Training set is empty.")
+        self.assertGreater(len(X_test), 0, "Testing set is empty.")
+
+    def test_model_training(self):
+        """Test if a Random Forest model can be trained on the dataset."""
+        df = pd.read_csv(self.audio_features_csv)
+        X = df.drop(columns=["filename", "label"])
+        y = df["label"]
+
+        # Scale the features
+        scaler = StandardScaler()
+        X_scaled = scaler.fit_transform(X)
+
+        # Split the data
+        X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
+
+        # Train a Random Forest model
+        model = RandomForestClassifier(random_state=42)
+        model.fit(X_train, y_train)
+
+        # Test the model
+        y_pred = model.predict(X_test)
+        accuracy = accuracy_score(y_test, y_pred)
+        self.assertGreater(accuracy, 0.5, "Model accuracy is too low.")
 
 if __name__ == "__main__":
     unittest.main()

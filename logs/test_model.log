@@ -118,3 +118,60 @@
 2025-03-30 16:48:56 - INFO - 
 === Testing Random Forest ===
 2025-03-30 16:48:56 - INFO - Random Forest Accuracy: 0.6000
+2025-03-31 12:36:31 - INFO - Loading and preprocessing data for testing...
+2025-03-31 12:36:34 - INFO - Loading and preprocessing data for testing...
+2025-03-31 12:36:34 - INFO - Loading and preprocessing data for testing...
+2025-03-31 12:43:22 - INFO - Loading features from audio_features.csv...
+2025-03-31 12:43:22 - INFO - Scaler saved to H:/ML project/Project\models/scaler.pkl
+2025-03-31 12:43:22 - INFO - 
+=== Testing CNN Model ===
+2025-03-31 12:43:24 - INFO - CNN Accuracy: 0.4600
+2025-03-31 12:43:24 - INFO - Loading features from audio_features.csv...
+2025-03-31 12:43:24 - INFO - Scaler saved to H:/ML project/Project\models/scaler.pkl
+2025-03-31 12:43:24 - INFO - 
+=== Testing LSTM Model ===
+2025-03-31 12:44:19 - INFO - LSTM Accuracy: 0.4950
+2025-03-31 12:44:19 - INFO - Loading features from audio_features.csv...
+2025-03-31 12:44:19 - INFO - Scaler saved to H:/ML project/Project\models/scaler.pkl
+2025-03-31 12:44:19 - INFO - 
+=== Testing KNN ===
+2025-03-31 12:44:20 - INFO - KNN Accuracy: 0.5250
+2025-03-31 12:44:20 - INFO - 
+=== Testing SVM ===
+2025-03-31 12:44:20 - INFO - SVM Accuracy: 0.6500
+2025-03-31 12:44:20 - INFO - 
+=== Testing Logistic Regression ===
+2025-03-31 12:44:20 - INFO - Logistic Regression Accuracy: 0.6300
+2025-03-31 12:44:20 - INFO - 
+=== Testing Decision Tree ===
+2025-03-31 12:44:20 - INFO - Decision Tree Accuracy: 0.4400
+2025-03-31 12:44:20 - INFO - 
+=== Testing Random Forest ===
+2025-03-31 12:44:20 - INFO - Random Forest Accuracy: 0.6400
+2025-03-31 13:03:40 - INFO - Loading features from audio_features.csv...
+2025-03-31 13:03:40 - INFO - Scaler saved to H:/ML project/Project\models/scaler.pkl
+2025-03-31 13:03:40 - INFO - 
+=== Testing CNN Model ===
+2025-03-31 13:03:43 - INFO - CNN Accuracy: 0.4550
+2025-03-31 13:03:43 - INFO - Loading features from audio_features.csv...
+2025-03-31 13:03:43 - INFO - Scaler saved to H:/ML project/Project\models/scaler.pkl
+2025-03-31 13:03:43 - INFO - 
+=== Testing LSTM Model ===
+2025-03-31 13:05:14 - INFO - LSTM Accuracy: 0.4550
+2025-03-31 13:05:14 - INFO - Loading features from audio_features.csv...
+2025-03-31 13:05:14 - INFO - Scaler saved to H:/ML project/Project\models/scaler.pkl
+2025-03-31 13:05:14 - INFO - 
+=== Testing KNN ===
+2025-03-31 13:05:15 - INFO - KNN Accuracy: 0.5250
+2025-03-31 13:05:15 - INFO - 
+=== Testing SVM ===
+2025-03-31 13:05:15 - INFO - SVM Accuracy: 0.6500
+2025-03-31 13:05:15 - INFO - 
+=== Testing Logistic Regression ===
+2025-03-31 13:05:15 - INFO - Logistic Regression Accuracy: 0.6300
+2025-03-31 13:05:15 - INFO - 
+=== Testing Decision Tree ===
+2025-03-31 13:05:15 - INFO - Decision Tree Accuracy: 0.4400
+2025-03-31 13:05:15 - INFO - 
+=== Testing Random Forest ===
+2025-03-31 13:05:16 - INFO - Random Forest Accuracy: 0.6400

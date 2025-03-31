@@ -1,9 +1,10 @@
 import unittest
-from src.data_processing.load_data import load_audio_files, encode_labels
-from src.utils.config import Config
-import numpy as np
 import os
 import warnings
+import pandas as pd
+import numpy as np
+from src.data_processing.load_data import load_audio_files, encode_labels
+from src.utils.config import Config
 
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
@@ -40,6 +41,39 @@ class TestDataLoading(unittest.TestCase):
         self.assertTrue(all(isinstance(label, int) for label in encoded_labels), "Encoded labels should be integers.")
         for i, label in enumerate(labels):
             self.assertEqual(label_encoder.inverse_transform([encoded_labels[i]])[0], label, "Encoded label mapping is incorrect.")
+
+class TestDataProcessing(unittest.TestCase):
+    def setUp(self):
+        """Set up configuration and paths."""
+        self.config = Config()
+        self.audio_features_csv = self.config.audio_features_csv
+
+    def test_audio_features_csv_exists(self):
+        """Test if the audio_features.csv file exists."""
+        self.assertTrue(os.path.exists(self.audio_features_csv), "audio_features.csv does not exist.")
+
+    def test_audio_features_csv_not_empty(self):
+        """Test if the audio_features.csv file is not empty."""
+        df = pd.read_csv(self.audio_features_csv)
+        self.assertGreater(len(df), 0, "audio_features.csv is empty.")
+
+    def test_audio_features_columns(self):
+        """Test if the audio_features.csv file has the required columns."""
+        df = pd.read_csv(self.audio_features_csv)
+        required_columns = [
+            "filename", "length", "chroma_stft_mean", "chroma_stft_var", "rms_mean", "rms_var",
+            "spectral_centroid_mean", "spectral_centroid_var", "spectral_bandwidth_mean",
+            "spectral_bandwidth_var", "rolloff_mean", "rolloff_var", "zero_crossing_rate_mean",
+            "zero_crossing_rate_var", "tempo", "label"
+        ]
+        for column in required_columns:
+            self.assertIn(column, df.columns, f"Missing column: {column}")
+
+    def test_audio_features_labels(self):
+        """Test if the labels in audio_features.csv are valid."""
+        df = pd.read_csv(self.audio_features_csv)
+        self.assertIn("label", df.columns, "Missing 'label' column in audio_features.csv.")
+        self.assertGreater(len(df["label"].unique()), 0, "No unique labels found in audio_features.csv.")
 
 if __name__ == "__main__":
     unittest.main()

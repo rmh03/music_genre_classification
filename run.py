@@ -1,10 +1,9 @@
-from src.data_processing.load_data import load_audio_files, encode_labels
-from src.data_processing.feature_engineering import extract_and_plot_features
-from src.model.train import train_sklearn_models, train_dl_models
+from src.model.train import train_sklearn_models_with_tuning, train_dl_models
 from src.utils.config import Config
 from src.utils.logger import Logger
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
+import pandas as pd
 import joblib
 import os
 
@@ -13,41 +12,46 @@ def main():
     config = Config()
     logger = Logger()
 
-    # Load and preprocess data
-    logger.log("Loading and preprocessing data...")
-    X, y = load_audio_files(config.audio_dir, max_files_per_genre=100, augment=False)
-    y_encoded, label_encoder = encode_labels(y)
+    # Load features from audio_features.csv
+    logger.log("Loading features from audio_features.csv...")
+    features_csv_path = config.audio_features_csv
+    df = pd.read_csv(features_csv_path)
+
+    # Separate features and labels
+    X = df.drop(columns=["filename", "label"])
+    y = df["label"]
+
+    # Encode labels
+    y_encoded = pd.factorize(y)[0]
+
+    # Split data into training and testing sets
     X_train, X_test, y_train, y_test = train_test_split(X, y_encoded, test_size=0.2, random_state=42)
+
+    # Scale the features
     scaler = StandardScaler()
     X_train = scaler.fit_transform(X_train)
     X_test = scaler.transform(X_test)
 
     # Save the scaler for future use
-    scaler_path = os.path.join(config.base_dir, "models", "scaler.pkl")
+    scaler_path = os.path.join(config.models_dir, "scaler.pkl")
     joblib.dump(scaler, scaler_path)
     logger.log(f"Scaler saved to {scaler_path}")
 
-    # Train traditional ML models
-    logger.log("\nTraining Traditional ML Models...")
-    sklearn_models = train_sklearn_models(X_train, y_train)
+    # Train traditional ML models with hyperparameter tuning
+    logger.log("\nTraining Traditional ML Models with Hyperparameter Tuning...")
+    sklearn_models = train_sklearn_models_with_tuning(X_train, y_train)
     for name, model in sklearn_models.items():
-        model_path = os.path.join(config.base_dir, "models", f"{name.lower().replace(' ', '_')}.pkl")
+        model_path = os.path.join(config.models_dir, f"{name.lower().replace(' ', '_')}_tuned.pkl")
         joblib.dump(model, model_path)
         logger.log(f"{name} model saved to {model_path}")
 
     # Train deep learning models
     logger.log("\nTraining Deep Learning Models...")
-    dl_models = train_dl_models(X_train, y_train, num_classes=len(label_encoder.classes_))
+    dl_models = train_dl_models(X_train, y_train, num_classes=len(set(y_encoded)))
     for name, model in dl_models.items():
-        model_path = os.path.join(config.base_dir, "models", f"{name.lower()}.h5")
+        model_path = os.path.join(config.models_dir, f"{name.lower()}.h5")
         model.save(model_path)
         logger.log(f"{name} model saved to {model_path}")
-
-    # Extract and plot features for a sample audio file
-    audio_dir = config.audio_dir
-    sample_audio = os.path.join(audio_dir, "classical", "classical.00000.wav")  # Example file path
-    logger.log(f"Processing {sample_audio}...")
-    extract_and_plot_features(sample_audio)
 
 if __name__ == "__main__":
     main()

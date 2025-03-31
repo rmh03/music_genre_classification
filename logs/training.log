@@ -118,3 +118,103 @@ Training Deep Learning Models...
 2025-03-30 16:48:15 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
 2025-03-30 16:48:15 - INFO - LSTM model saved to H:\ML project\Project\models\lstm.h5
 2025-03-30 16:48:15 - INFO - Processing H:\ML project\Project\data\raw\genres_original\classical\classical.00000.wav...
+2025-03-31 12:15:48 - INFO - Loading and preprocessing data...
+2025-03-31 12:18:06 - INFO - Loading and preprocessing data...
+2025-03-31 12:25:50 - INFO - Loading features from audio_features.csv...
+2025-03-31 12:33:36 - INFO - Loading features from: H:/ML project/Project\data\processed\audio_features.csv
+2025-03-31 12:33:36 - INFO - Scaler saved to H:/ML project/Project\models\scaler.pkl
+2025-03-31 12:33:36 - INFO - 
+Training Traditional ML Models...
+2025-03-31 12:33:36 - INFO - 
+=== Training KNN ===
+2025-03-31 12:33:36 - INFO - 
+=== Training SVM ===
+2025-03-31 12:33:36 - INFO - 
+=== Training Logistic Regression ===
+2025-03-31 12:33:36 - INFO - 
+=== Training Decision Tree ===
+2025-03-31 12:33:36 - INFO - 
+=== Training Random Forest ===
+2025-03-31 12:33:37 - INFO - KNN model saved to H:/ML project/Project\models\knn.pkl
+2025-03-31 12:33:37 - INFO - SVM model saved to H:/ML project/Project\models\svm.pkl
+2025-03-31 12:33:37 - INFO - Logistic Regression model saved to H:/ML project/Project\models\logistic_regression.pkl
+2025-03-31 12:33:37 - INFO - Decision Tree model saved to H:/ML project/Project\models\decision_tree.pkl
+2025-03-31 12:33:37 - INFO - Random Forest model saved to H:/ML project/Project\models\random_forest.pkl
+2025-03-31 12:33:37 - INFO - 
+Training Deep Learning Models...
+2025-03-31 12:33:37 - INFO - 
+=== Training CNN ===
+2025-03-31 12:33:40 - INFO - 
+=== Training LSTM ===
+2025-03-31 12:33:57 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-03-31 12:33:57 - INFO - CNN model saved to H:/ML project/Project\models\cnn.h5
+2025-03-31 12:33:57 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-03-31 12:33:57 - INFO - LSTM model saved to H:/ML project/Project\models\lstm.h5
+2025-03-31 12:55:55 - INFO - Loading features from audio_features.csv...
+2025-03-31 12:55:55 - INFO - Scaler saved to H:/ML project/Project\models\scaler.pkl
+2025-03-31 12:55:55 - INFO - 
+Training Traditional ML Models with Hyperparameter Tuning...
+2025-03-31 12:55:55 - INFO - 
+=== Training KNN with Hyperparameter Tuning ===
+2025-03-31 12:56:00 - INFO - Best Parameters for KNN: {'metric': 'manhattan', 'n_neighbors': 11, 'weights': 'distance'}
+2025-03-31 12:56:00 - INFO - Best Accuracy for KNN: 0.5807
+2025-03-31 12:56:00 - INFO - 
+=== Training SVM with Hyperparameter Tuning ===
+2025-03-31 12:56:00 - INFO - Best Parameters for SVM: {'C': 10, 'gamma': 'scale', 'kernel': 'rbf'}
+2025-03-31 12:56:00 - INFO - Best Accuracy for SVM: 0.6521
+2025-03-31 12:56:00 - INFO - 
+=== Training Logistic Regression with Hyperparameter Tuning ===
+2025-03-31 12:56:00 - INFO - Best Parameters for Logistic Regression: {'C': 1, 'solver': 'liblinear'}
+2025-03-31 12:56:00 - INFO - Best Accuracy for Logistic Regression: 0.6145
+2025-03-31 12:56:00 - INFO - 
+=== Training Random Forest with Hyperparameter Tuning ===
+2025-03-31 12:56:12 - INFO - Best Parameters for Random Forest: {'criterion': 'gini', 'max_depth': None, 'min_samples_split': 2, 'n_estimators': 100}
+2025-03-31 12:56:12 - INFO - Best Accuracy for Random Forest: 0.6008
+2025-03-31 12:56:12 - INFO - KNN model saved to H:/ML project/Project\models\knn_tuned.pkl
+2025-03-31 12:56:12 - INFO - SVM model saved to H:/ML project/Project\models\svm_tuned.pkl
+2025-03-31 12:56:12 - INFO - Logistic Regression model saved to H:/ML project/Project\models\logistic_regression_tuned.pkl
+2025-03-31 12:56:12 - INFO - Random Forest model saved to H:/ML project/Project\models\random_forest_tuned.pkl
+2025-03-31 12:56:12 - INFO - 
+Training Deep Learning Models...
+2025-03-31 12:56:12 - INFO - 
+=== Training CNN ===
+2025-03-31 12:56:16 - INFO - 
+=== Training LSTM ===
+2025-03-31 12:56:33 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-03-31 12:56:33 - INFO - CNN model saved to H:/ML project/Project\models\cnn.h5
+2025-03-31 12:56:33 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-03-31 12:56:34 - INFO - LSTM model saved to H:/ML project/Project\models\lstm.h5
+2025-03-31 13:02:06 - INFO - Loading features from audio_features.csv...
+2025-03-31 13:02:06 - INFO - Scaler saved to H:/ML project/Project\models\scaler.pkl
+2025-03-31 13:02:06 - INFO - 
+Training Traditional ML Models with Hyperparameter Tuning...
+2025-03-31 13:02:06 - INFO - 
+=== Training KNN with Hyperparameter Tuning ===
+2025-03-31 13:02:15 - INFO - Best Parameters for KNN: {'metric': 'manhattan', 'n_neighbors': 11, 'weights': 'distance'}
+2025-03-31 13:02:15 - INFO - Best Accuracy for KNN: 0.5807
+2025-03-31 13:02:15 - INFO - 
+=== Training SVM with Hyperparameter Tuning ===
+2025-03-31 13:02:15 - INFO - Best Parameters for SVM: {'C': 10, 'gamma': 'scale', 'kernel': 'rbf'}
+2025-03-31 13:02:15 - INFO - Best Accuracy for SVM: 0.6521
+2025-03-31 13:02:15 - INFO - 
+=== Training Logistic Regression with Hyperparameter Tuning ===
+2025-03-31 13:02:16 - INFO - Best Parameters for Logistic Regression: {'C': 1, 'solver': 'liblinear'}
+2025-03-31 13:02:16 - INFO - Best Accuracy for Logistic Regression: 0.6145
+2025-03-31 13:02:16 - INFO - 
+=== Training Random Forest with Hyperparameter Tuning ===
+2025-03-31 13:02:38 - INFO - Best Parameters for Random Forest: {'criterion': 'gini', 'max_depth': 20, 'min_samples_split': 2, 'n_estimators': 200}
+2025-03-31 13:02:38 - INFO - Best Accuracy for Random Forest: 0.6107
+2025-03-31 13:02:38 - INFO - KNN model saved to H:/ML project/Project\models\knn_tuned.pkl
+2025-03-31 13:02:38 - INFO - SVM model saved to H:/ML project/Project\models\svm_tuned.pkl
+2025-03-31 13:02:38 - INFO - Logistic Regression model saved to H:/ML project/Project\models\logistic_regression_tuned.pkl
+2025-03-31 13:02:38 - INFO - Random Forest model saved to H:/ML project/Project\models\random_forest_tuned.pkl
+2025-03-31 13:02:38 - INFO - 
+Training Deep Learning Models...
+2025-03-31 13:02:38 - INFO - 
+=== Training CNN ===
+2025-03-31 13:02:46 - INFO - 
+=== Training LSTM ===
+2025-03-31 13:03:17 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-03-31 13:03:17 - INFO - CNN model saved to H:/ML project/Project\models\cnn.h5
+2025-03-31 13:03:17 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-03-31 13:03:18 - INFO - LSTM model saved to H:/ML project/Project\models\lstm.h5

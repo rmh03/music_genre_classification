@@ -6,6 +6,9 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Dropout, Conv1D, MaxPooling1D, Flatten, LSTM, Input
+from tensorflow.keras.optimizers import Adam
 from src.model.models import (
     create_knn_model, create_svm_model, create_logreg_model,
     create_decision_tree_model, create_random_forest_model,
@@ -57,50 +60,36 @@ def train_sklearn_models(X_train, y_train):
 def train_sklearn_models_with_tuning(X_train, y_train):
     """
     Train sklearn models with hyperparameter tuning.
-
-    Parameters:
-        X_train (numpy.ndarray): Training features.
-        y_train (numpy.ndarray): Training labels.
-
-    Returns:
-        dict: Dictionary of trained sklearn models with best hyperparameters.
     """
     logger = Logger()
     models = {
+        'KNN': {
+            'model': KNeighborsClassifier(),
+            'params': {
+                'n_neighbors': range(1, 21),
+                'weights': ['uniform', 'distance'],
+                'metric': ['euclidean', 'manhattan', 'minkowski']
+            }
+        },
         'SVM': {
-            'model': create_svm_model(),
+            'model': SVC(),
             'params': {
                 'C': [0.1, 1, 10],
                 'kernel': ['linear', 'rbf', 'poly'],
                 'gamma': ['scale', 'auto']
             }
         },
-        'Random Forest': {
-            'model': create_random_forest_model(),
-            'params': {
-                'n_estimators': [50, 100, 200],
-                'max_depth': [None, 10, 20],
-                'min_samples_split': [2, 5, 10]
-            }
-        },
         'Logistic Regression': {
-            'model': create_logreg_model(),
+            'model': LogisticRegression(max_iter=5000),
             'params': {
                 'C': [0.1, 1, 10],
                 'solver': ['lbfgs', 'liblinear']
             }
         },
-        'KNN': {
-            'model': create_knn_model(),
+        'Random Forest': {
+            'model': RandomForestClassifier(),
             'params': {
-                'n_neighbors': range(1, 21),
-                'weights': ['uniform', 'distance'],
-                'metric': ['euclidean', 'manhattan']
-            }
-        },
-        'Decision Tree': {
-            'model': create_decision_tree_model(),
-            'params': {
+                'n_estimators': [50, 100, 200],
                 'max_depth': [None, 10, 20],
                 'min_samples_split': [2, 5, 10],
                 'criterion': ['gini', 'entropy']
@@ -115,34 +104,49 @@ def train_sklearn_models_with_tuning(X_train, y_train):
         grid_search.fit(X_train, y_train)
         trained_models[name] = grid_search.best_estimator_
         logger.log(f"Best Parameters for {name}: {grid_search.best_params_}")
+        logger.log(f"Best Accuracy for {name}: {grid_search.best_score_:.4f}")
     return trained_models
 
 def train_dl_models(X_train, y_train, num_classes):
     """
-    Train deep learning models without evaluation.
-
-    Parameters:
-        X_train (numpy.ndarray): Training features.
-        y_train (numpy.ndarray): Training labels.
-        num_classes (int): Number of output classes.
-
-    Returns:
-        dict: Dictionary of trained deep learning models.
+    Train deep learning models (CNN and LSTM).
     """
     logger = Logger()
-    # Reshape for CNN/LSTM
-    X_train_3d = X_train[..., np.newaxis]
-    
+    models = {}
+
     # CNN Model
-    cnn_model = create_cnn_model(input_shape=(X_train_3d.shape[1], 1), num_classes=num_classes)
-    cnn_model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
     logger.log("\n=== Training CNN ===")
-    cnn_model.fit(X_train_3d, y_train, epochs=20, batch_size=32, verbose=1)
-    
+    cnn_model = Sequential([
+        Input(shape=(X_train.shape[1], 1)),
+        Conv1D(64, kernel_size=3, activation='relu'),
+        MaxPooling1D(pool_size=2),
+        Dropout(0.3),
+        Conv1D(128, kernel_size=3, activation='relu'),
+        MaxPooling1D(pool_size=2),
+        Dropout(0.3),
+        Flatten(),
+        Dense(256, activation='relu'),
+        Dropout(0.4),
+        Dense(num_classes, activation='softmax')
+    ])
+    cnn_model.compile(optimizer=Adam(), loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+    cnn_model.fit(X_train[..., None], y_train, epochs=20, batch_size=32, verbose=1)
+    models['CNN'] = cnn_model
+
     # LSTM Model
-    lstm_model = create_lstm_model(input_shape=(X_train.shape[1], 1), num_classes=num_classes)
-    lstm_model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
     logger.log("\n=== Training LSTM ===")
-    lstm_model.fit(X_train_3d, y_train, epochs=20, batch_size=32, verbose=1)
-    
-    return {'CNN': cnn_model, 'LSTM': lstm_model}
+    lstm_model = Sequential([
+        Input(shape=(X_train.shape[1], 1)),
+        LSTM(128, return_sequences=True),
+        Dropout(0.3),
+        LSTM(64),
+        Dropout(0.3),
+        Dense(128, activation='relu'),
+        Dropout(0.4),
+        Dense(num_classes, activation='softmax')
+    ])
+    lstm_model.compile(optimizer=Adam(), loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+    lstm_model.fit(X_train[..., None], y_train, epochs=20, batch_size=32, verbose=1)
+    models['LSTM'] = lstm_model
+
+    return models
